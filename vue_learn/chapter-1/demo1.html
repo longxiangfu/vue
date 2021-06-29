@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:v-bind="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<!--3. view-->
+<!--<div id="app">-->
+    <!--{{message}}-->
+<!--</div>-->
+<div id="app">
+    <span v-bind:title="message">
+        java人员学vue
+    </span>
+</div>
+
+<!--1. 导入vue.js-->
+<script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
+<script>
+    <!--2.创建vm-->
+    var vm = new Vue({
+        el: "#app", // 绑定元素
+        data: { // 4.model
+            message: "hello,vue!"
+        }
+    });
+</script>
+
+</body>
+</html>

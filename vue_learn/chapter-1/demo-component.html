@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:v-bind="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<!--Vue.component  vue组件，就是自定义标签，减少重复-->
+
+<div id="app">
+    <!--获取到外界数据，并将外界数据绑定到组件的入参上-->
+    <qinjiang v-for="item in items" v-bind:qin="item"></qinjiang>
+
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
+<script>
+
+    <!--定义了Vue的组件,名称为qingjing-->
+    Vue.component("qinjiang", {
+        props: ['qin'], // 支柱：用于传递参数，将外界值传递进该组件中
+        template: '<li>{{qin}}</li>' // 模板
+    });
+    var vm = new Vue({
+        el: "#app",
+        data: {
+            items: ["Java", "Linux", "前端"]
+        }
+    });
+</script>
+
+</body>
+</html>

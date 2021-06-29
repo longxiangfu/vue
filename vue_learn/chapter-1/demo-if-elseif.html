@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:v-bind="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<div id="app">
+    <h1 v-if="type==='A'">a</h1>
+    <h1 v-else-if="type==='B'">b</h1>
+    <h1 v-else-if="type==='C'">c</h1>
+    <h1 v-else>d</h1>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
+<script>
+    var vm = new Vue({
+        el: "#app",
+        data: {
+            type: 'A'
+        }
+    });
+</script>
+
+</body>
+</html>

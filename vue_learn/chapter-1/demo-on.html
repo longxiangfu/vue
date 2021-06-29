@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:v-bind="http://www.w3.org/1999/xhtml" xmlns:v-on="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<!--事件处理v-on -->
+
+<div id="app">
+    <!--当button的click事件发生时，调用函数sayHi-->
+    <button v-on:click="sayHi">Click Me</button>
+
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
+<script>
+    var vm = new Vue({
+        el: "#app",
+        data: {
+            message: "狂神说Java"
+        },
+        methods: { // 函数必须定义在Vue中属性methods中
+            sayHi: function () {
+                alert(this.message)
+            }
+        }
+    });
+</script>
+
+</body>
+</html>
