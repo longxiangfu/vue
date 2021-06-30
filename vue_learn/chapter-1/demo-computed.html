@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:v-bind="http://www.w3.org/1999/xhtml" xmlns:v-on="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+
+<div id="app">
+    <p>currentTime1:{{currentTime1()}}</p>
+    <p>currentTime2:{{currentTime2}}</p>
+
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
+<script>
+    var vm = new Vue({
+        el: "#app",
+        data: {
+            message: "狂神说Java"
+        },
+        methods: { // 方法被每一次调用时，方法体将重新计算一遍
+            currentTime1: function () {
+                return Date.now();
+            }
+        },
+        // 方法（其实是属性：计算属性）被每一次调用时，只要方法体中值this.message不变，那么计算属性currentTime2
+        // 代表的时间就不会变化，this.message为了能够让currentTime2观察到this.message变化而后currentTime2随之变化。
+        // 计算属性：将不经常变化的计算结果放到缓存，以节省我们的系统开销
+        computed: {
+            currentTime2: function () {
+                this.message;
+                return Date.now();
+            }
+        }
+    });
+</script>
+
+</body>
+</html>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:v-bind="http://www.w3.org/1999/xhtml" xmlns:v-on="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <!--解决闪烁问题-->
+    <style>
+        [v-clock]{
+            display: none;
+        }
+    </style>
+</head>
+<body>
+
+
+<div id="vue" v-clock>
+    <div>{{info.name}}</div>
+    <div>{{info.address.street}}</div>
+    <a v-bind:href="info.url">点我</a>
+
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+<script>
+    var vm = new Vue({
+        el: "#vue",
+        data(){ // data方法，接收axios的响应
+            return{
+                info: { // info可以直接被使用
+                    name: null,
+                    address: {
+                        street: null,
+                        city: null,
+                        country: null
+                    },
+                    url: null
+                }
+            }
+        },
+        mounted(){ // 钩子函数  链式编程  ES6新特性
+            axios.get("axios.json").then(response=>this.info=response.data);
+        }
+    });
+</script>
+
+</body>
+</html>
