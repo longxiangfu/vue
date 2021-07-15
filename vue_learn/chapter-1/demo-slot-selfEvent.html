@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:v-bind="http://www.w3.org/1999/xhtml" xmlns:v-on="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+
+<div id="app">
+    <todo>
+        <todo-title slot="todo-title-slot" v-bind:title="titleData"></todo-title>
+        <todo-items slot="todo-items-slot" v-for="(itemData,itemIndex) in itemsData" v-bind:item="itemData"
+            v-on:remove-li-event="removeLi(itemIndex)"> // 3.自定义事件内容分发
+        </todo-items>
+    </todo>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
+<script>
+    Vue.component("todo", {
+        template: '<div>\
+                        <slot name="todo-title-slot"></slot>\
+                        <ul>\
+                            <slot name="todo-items-slot"></slot>\
+                        </ul>\
+                  </div>'
+    });
+    Vue.component("todo-title", {
+        props: ['title'],
+        template: '<p>{{title}}</p>'
+    });
+    Vue.component("todo-items", {
+        props: ['item'],
+        template: '<li>{{item}}<button v-on:click="remove">删除</button></li>', // 1.点击按钮时调用该组件的remove方法
+        methods: {
+            remove: function () {
+                this.$emit('remove-li-event'); // 2.发出（调用）自定义事件，注意事件名称不能是驼峰命名
+            }
+        }
+    });
+
+    var vm = new Vue({
+        el: "#app",
+        data: {
+            titleData: "狂神系列教程",
+            itemsData: ['狂神教Java', '狂神教Vue','狂神教Python']
+        },
+        methods: {
+            removeLi: function (itemIndex) {
+                alert("删除了" + this.itemsData[itemIndex]);
+                this.itemsData.splice(itemIndex,1);
+            }
+        }
+    });
+</script>
+
+</body>
+</html>
