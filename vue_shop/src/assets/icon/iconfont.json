@@ -1,0 +1,23 @@
+{
+  "id": "2716811",
+  "name": "vue_learn",
+  "font_family": "iconfont",
+  "css_prefix_text": "icon-vue_learn",
+  "description": "vue学习",
+  "glyphs": [
+    {
+      "icon_id": "8441724",
+      "name": "密码",
+      "font_class": "mima",
+      "unicode": "e689",
+      "unicode_decimal": 59017
+    },
+    {
+      "icon_id": "17927304",
+      "name": "用户",
+      "font_class": "yonghu",
+      "unicode": "e601",
+      "unicode_decimal": 58881
+    }
+  ]
+}
