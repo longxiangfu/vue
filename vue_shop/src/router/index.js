@@ -3,13 +3,23 @@ import Router from 'vue-router'
 
 import Login from '../components/Login'
 import Home from '../components/Home'
+import Welcome from '../components/Welcome'
 
 Vue.use(Router)
 
 const router = new Router({
   routes: [
     {path: '/login', component: Login},
-    {path: '/home', component: Home},
+    {
+      path: '/home',
+      component: Home,
+      redirect: '/welcome',
+      children: [
+        {
+          path: '/welcome',component: Welcome
+        }
+      ]
+    },
     //当路径是/时重定向到登录路径
     {path: '/', redirect: '/login'}
   ]

@@ -20,7 +20,13 @@ Vue.use(VueAxios, axios);
 
 
 // 设置axios请求的根路径
-axios.defaults.baseURL = 'http://timemeetyou.com:8889/api/private/v1/'
+axios.defaults.baseURL = 'http://timemeetyou.com:8889/api/private/v1/';
+// 请求拦截   request表示请求的整个对象
+axios.interceptors.request.use(request =>{
+  // 向请求头中添加字段Authorization
+  request.headers.Authorization = window.sessionStorage.getItem('token');
+  return request;
+});
 
 
 new Vue({

@@ -1,8 +1,8 @@
 @font-face {
   font-family: "iconfont"; /* Project id 2716811 */
-  src: url('iconfont.woff2?t=1627895262052') format('woff2'),
-       url('iconfont.woff?t=1627895262052') format('woff'),
-       url('iconfont.ttf?t=1627895262052') format('truetype');
+  src: url('iconfont.woff2?t=1628584055523') format('woff2'),
+       url('iconfont.woff?t=1628584055523') format('woff'),
+       url('iconfont.ttf?t=1628584055523') format('truetype');
 }
 
 .iconfont {
@@ -11,6 +11,26 @@
   font-style: normal;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-vue_learn102:before {
+  content: "\ea61";
+}
+
+.icon-vue_learn125:before {
+  content: "\e641";
+}
+
+.icon-vue_learn101:before {
+  content: "\e625";
+}
+
+.icon-vue_learn145:before {
+  content: "\e609";
+}
+
+.icon-vue_learn103:before {
+  content: "\e630";
 }
 
 .icon-vue_learnmima:before {

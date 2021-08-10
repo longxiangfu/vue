@@ -6,6 +6,41 @@
   "description": "vue学习",
   "glyphs": [
     {
+      "icon_id": "742125",
+      "name": "订单管理",
+      "font_class": "dingdanguanli",
+      "unicode": "ea61",
+      "unicode_decimal": 60001
+    },
+    {
+      "icon_id": "9954477",
+      "name": "用户管理",
+      "font_class": "yonghuguanli",
+      "unicode": "e641",
+      "unicode_decimal": 58945
+    },
+    {
+      "icon_id": "14310218",
+      "name": "商品管理",
+      "font_class": "shangpinguanli",
+      "unicode": "e625",
+      "unicode_decimal": 58917
+    },
+    {
+      "icon_id": "15187540",
+      "name": "数据统计",
+      "font_class": "shujutongji",
+      "unicode": "e609",
+      "unicode_decimal": 58889
+    },
+    {
+      "icon_id": "18592246",
+      "name": "权限管理",
+      "font_class": "quanxianguanli",
+      "unicode": "e630",
+      "unicode_decimal": 58928
+    },
+    {
       "icon_id": "8441724",
       "name": "密码",
       "font_class": "mima",
