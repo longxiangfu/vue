@@ -11,10 +11,12 @@
     <!--页面主体区域-->
     <el-container>
       <!--侧边栏-->
-      <el-aside width="200px">
+      <el-aside :width="isCollapse ? '64px' : '200px'">
+        <div class="toggle-button" @click="toggleCollapse">|||</div>
         <!--侧边栏菜单区域-->
         <el-menu background-color="#333744" text-color="#fff" active-text-color="#409bff"
-                 :unique-opened="true" :router="true">
+                 :unique-opened="true" :router="true" :collapse="isCollapse" :collapse-transition="false"
+                 :default-active="activePath">
           <!--一级菜单  el-submenu可以展开;for的每一项指定唯一的key;-->
           <el-submenu v-bind:index="item.id+''" v-for="item in menuList" :key="item.id">
             <!--一级菜单的模板区域-->
@@ -25,7 +27,8 @@
               <span>{{item.authName}}</span>
             </template>
             <!--二级菜单 el-menu-item不能展开-->
-            <el-menu-item :index="'/'+subItem.path" v-for="subItem in item.children" :key="subItem.id">
+            <el-menu-item :index="'/'+subItem.path" v-for="subItem in item.children" :key="subItem.id"
+                          @click="saveNavState('/'+subItem.path)">
               <!--二级菜单的模板区域-->
               <template slot="title">
                 <!--图标-->
@@ -50,12 +53,19 @@
         name: "Home",
         // Home组件创建完成之后执行的钩子
         created(){
+          // 组件创建完成后直接获取菜单列表
           this.getMenuList();
+          // 组件创建完成后或刷新后，从sessionStorage中获取二级菜单的激活路径，并赋值给变量activePath
+          this.activePath = window.sessionStorage.getItem("activePath");
         },
         data(){
           return {
             // 左侧菜单数据
-            menuList: []
+            menuList: [],
+            // 是否折叠
+            isCollapse: false,
+            // 激活的菜单路径
+            activePath: ''
           }
         },
         methods: {
@@ -70,9 +80,18 @@
                 if (response.data.meta.status != 200) return this.$message.error(response.data.meta.msg);
                 this.menuList = response.data.data;
             }).catch(error =>{
-                console.log(error);
-                this.$message.error("获取菜单失败");
+                console.error(error);
+                this.$message.error("获取菜单 异常");
             });
+          },
+          // 切换菜单的折叠与展开
+          toggleCollapse() {
+            this.isCollapse = !this.isCollapse;
+          },
+          // 保存导航状态。点击二级菜单，将index赋值给变量，并且将变量保存到sessionStorage中
+          saveNavState(activePath){
+            this.activePath = activePath;
+            window.sessionStorage.setItem("activePath", activePath);
           }
         }
     }
@@ -109,6 +128,15 @@
   }
   .home-container {
     height: 100%;
+  }
+  .toggle-button {
+    background-color: #4a5064;
+    line-height: 24px; // 行高
+    text-align: center; // 文本居中
+    font-size: 10px; // 字体大小
+    color: #fff; // 字体颜色
+    letter-spacing: 0.2em; // 字母间隔
+    cursor: pointer; // 光标为手指
   }
 
 </style>

@@ -6,3 +6,16 @@ html, body, #app{
   margin: 0;
   padding: 0;
 }
+
+.el-breadcrumb {
+  margin-bottom: 15px;
+}
+.el-card {
+  /*盒子阴影   !important表示自定义的样式覆盖原来的样式*/
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.15) !important;
+}
+
+.el-table {
+  margin-top: 15px;
+  font-size: 12px;
+}
