@@ -5,6 +5,8 @@ html, body, #app{
   height: 100%;
   margin: 0;
   padding: 0;
+  /*当屏幕宽度小于1300px时，屏幕自动加左右滑动框*/
+  min-width: 1300px;
 }
 
 .el-breadcrumb {
