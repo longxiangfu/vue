@@ -11,12 +11,16 @@ import './assets/icon/iconfont.css'
 // 引入axios
 import axios from 'axios'
 import VueAxios from 'vue-axios'
+// 引入vue-table-with-tree-grid
+import TreeTable from 'vue-table-with-tree-grid'
 
 
 // 使用element-ui
 Vue.use(ElementUI);
 // 使用axios
 Vue.use(VueAxios, axios);
+// 使用vue-table-with-tree-grid
+Vue.component('tree-table', TreeTable);
 
 
 // 设置axios请求的根路径
